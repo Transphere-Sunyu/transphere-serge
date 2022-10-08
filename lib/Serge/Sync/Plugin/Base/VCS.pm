@@ -12,7 +12,7 @@ sub init {
 
     $self->SUPER::init(@_);
 
-    $self->{initialize} = undef; # set to 1 externally to allow data directory initialization
+    $self->{initialize} = 1; # set to 1 externally to allow data directory initialization
 
     $self->merge_schema({
         add_unversioned => 'BOOLEAN',

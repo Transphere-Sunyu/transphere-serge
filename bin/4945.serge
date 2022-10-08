@@ -1,0 +1,90 @@
+
+        sync
+        {
+            ts
+            {
+                plugin                      command
+
+                data
+                {
+                    project_id               4945
+                }
+            }
+
+            vcs
+            {
+                plugin                      git
+
+                data
+                {
+                    local_path              C:\Users\JohnCurtis\Desktop\serge\serge-1.4\bin\projects
+
+                    remote_path
+                    {
+                        main                https://github.com/Transphere-Sunyu/l10n-react.git
+                    }
+
+                    add_unversioned         YES
+                    commit_message          Automatic commit of translation files
+                    name                    Transphere
+                    email                   johnoula@transphere.com
+                }
+            }
+        }
+
+        jobs
+        {
+            {
+                id                          31256362
+                name                        Job Test 1
+                optimizations               YES
+                active                      YES
+                debug                       YES
+                debug_nosave                NO
+                output_only_mode            NO
+                source_language             en
+                destination_languages       zh
+                source_dir                  src/locales/
+                source_process_subdirs      NO
+                source_match                \.json$
+                source_exclude_dirs         ^(\.svn|\.git|\.hg|\.bzr|CVS)$
+                source_exclude              \.internal\.rc$
+
+                parser
+                {
+                    plugin                  parse_rc
+
+                    data
+                    {
+                    }
+                }
+
+                serializer
+                {
+                    plugin                  serialize_po
+
+                    data
+                    {
+                    }
+                }
+
+                normalize_strings           NO
+                use_keys_as_context         NO
+                leave_untranslated_blank    NO
+                db_source                   DBI:SQLite:dbname=./translate.db3
+                db_username                 l10n
+                db_password                 secretword
+                db_namespace                starling
+                ts_file_path                ./translations/%LANG%/%LOCALE%.po
+                output_lang_files           NO
+                output_default_lang_file    NO
+                output_encoding             UCS-2LE
+                output_bom                  YES
+
+                output_lang_rewrite
+                {
+                    no                      nb
+                }
+
+            }
+        }
