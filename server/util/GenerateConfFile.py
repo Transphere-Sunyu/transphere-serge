@@ -1,4 +1,25 @@
+import os
 
+
+class GenerateConfigurationFile():
+    current_dir = os.path.abspath(os.curdir)
+    path_to_config_file = os.path.join(current_dir)
+    root_path = os.path.normpath(os.getcwd() + os.sep + os.pardir)
+
+    def __init__(self, project_Id, remote_path, task_id, source_dir, root_path=root_path):
+        self.project_Id = project_Id
+
+        self.remote_path = remote_path
+        self.branch = ''
+        self.task_id = task_id
+        self.debug = True
+        self.source_language = 'en'
+        self.source_dir = os.path.join(root_path , 'projects' , str(project_Id) , 'main' ,source_dir.replace('/','\\'))
+        self.source_match = '\.json$'
+        self.translation_file_path = './translations/%LANG%/%LOCALE%.po'
+
+    def write_file(self, current_dir=current_dir, path_to_config_file=path_to_config_file):
+        contents = """
         sync
         {
             ts
@@ -7,7 +28,7 @@
 
                 data
                 {
-                    project_id               4945
+                    project_id               %d
                 }
             }
 
@@ -17,11 +38,11 @@
 
                 data
                 {
-                    local_path              C:\Users\JohnCurtis\Desktop\serge\serge-1.4\bin\projects
+                    local_path              %s
 
                     remote_path
                     {
-                        main                https://github.com/Transphere-Sunyu/l10n-react.git
+                        main                %s
                     }
 
                     add_unversioned         YES
@@ -35,18 +56,18 @@
         jobs
         {
             {
-                id                          31256362
+                id                          %s
                 name                        Job Test 1
                 optimizations               YES
                 active                      YES
                 debug                       YES
                 debug_nosave                NO
                 output_only_mode            NO
-                source_language             en
+                source_language             %s
                 destination_languages       zh
-                source_dir                  src/locales/
+                source_dir                  %s
                 source_process_subdirs      NO
-                source_match                \.json$
+                source_match                %s
                 source_exclude_dirs         ^(\.svn|\.git|\.hg|\.bzr|CVS)$
                 source_exclude              \.internal\.rc$
 
@@ -75,7 +96,7 @@
                 db_username                 l10n
                 db_password                 secretword
                 db_namespace                starling
-                ts_file_path                ./translations/%LANG%/%LOCALE%.po
+                ts_file_path                %s
                 output_lang_files           NO
                 output_default_lang_file    NO
                 output_encoding             UCS-2LE
@@ -87,4 +108,9 @@
                 }
 
             }
-        }
+        }""" % (self.project_Id, current_dir, self.remote_path, self.task_id, self.source_language,
+                self.source_dir, self.source_match, self.translation_file_path)
+        # f = open(path_to_config_file + '/%s.serge' % self.project_Id, 'w')
+        # f.write(contents)
+        # f.close()
+        print(self.source_dir)
