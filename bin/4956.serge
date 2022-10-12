@@ -1,33 +1,11 @@
-import os
 
-class GenerateConfigurationFile():
-    current_dir = os.path.abspath(os.curdir)
-    path_to_config_file = os.path.join(current_dir)
-    checkout_path = os.path.join(current_dir,'projects')
-    def __init__(self, project_Id, remote_path, branch, task_id, source_dir, checkout_path=checkout_path):
-        self.project_Id = project_Id
-        
-        self.remote_path = remote_path
-        self.branch = ''
-        self.task_id = task_id
-        self.debug = True
-        self.source_language =  'en'
-        self.source_dir = checkout_path+'/'+ project_Id + source_dir
-        self.source_match = '\.json$'
-        self.translation_file_path = './translations/%LANG%/%LOCALE%.po'
-    
-    def write_file(self, checkout_path=checkout_path, path_to_config_file=path_to_config_file):
-        contents = """
         sync
         {
             ts
             {
                 plugin                      command
 
-                data
-                {
-                    project_id               %d
-                }
+
             }
 
             vcs
@@ -36,11 +14,11 @@ class GenerateConfigurationFile():
 
                 data
                 {
-                    local_path              %s
+                    local_path              C:\Users\JohnCurtis\Desktop\transphere-serge\projects\4956
 
                     remote_path
                     {
-                        main                %s#%s
+                        main                https://github.com/Transphere-Sunyu/l10n-react.git
                     }
 
                     add_unversioned         YES
@@ -54,18 +32,18 @@ class GenerateConfigurationFile():
         jobs
         {
             {
-                id                          %s
+                id                          20064782
                 name                        Job Test 1
                 optimizations               YES
                 active                      YES
                 debug                       YES
                 debug_nosave                NO
                 output_only_mode            NO
-                source_language             %s
+                source_language             en
                 destination_languages       zh
-                source_dir                  %s
+                source_dir                  C:\Users\JohnCurtis\Desktop\transphere-serge\projects\4956\main\src\locales\
                 source_process_subdirs      NO
-                source_match                %s
+                source_match                \.json$
                 source_exclude_dirs         ^(\.svn|\.git|\.hg|\.bzr|CVS)$
                 source_exclude              \.internal\.rc$
 
@@ -94,7 +72,7 @@ class GenerateConfigurationFile():
                 db_username                 l10n
                 db_password                 secretword
                 db_namespace                starling
-                ts_file_path                %s
+                ts_file_path                ./translations/%LANG%/%LOCALE%.po
                 output_lang_files           NO
                 output_default_lang_file    NO
                 output_encoding             UCS-2LE
@@ -106,7 +84,4 @@ class GenerateConfigurationFile():
                 }
 
             }
-        }""" % (self.project_Id,checkout_path,self.remote_path,self.branch,self.task_id,self.source_language,self.source_dir,self.source_match,self.translation_file_path)
-        f = open(path_to_config_file + '/%s.serge' % self.project_Id ,'w' )
-        f.write(contents)
-        f.close()
+        }

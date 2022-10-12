@@ -6,19 +6,19 @@ class GenerateConfigurationFile():
     path_to_config_file = os.path.join(current_dir)
     root_path = os.path.normpath(os.getcwd() + os.sep + os.pardir)
 
-    def __init__(self, project_Id, remote_path, task_id, source_dir, root_path=root_path):
-        self.project_Id = project_Id
-
+    def __init__(self, project_id, remote_path, task_id, source_dir, root_path=root_path):
+        self.project_id = project_id
+        self.project_checkout_path = os.path.join(root_path, 'projects', str(project_id))
         self.remote_path = remote_path
         self.branch = ''
         self.task_id = task_id
         self.debug = True
         self.source_language = 'en'
-        self.source_dir = os.path.join(root_path , 'projects' , str(project_Id) , 'main' ,source_dir.replace('/','\\'))
+        self.source_dir = os.path.join(root_path, 'projects', str(project_id), 'main', source_dir.replace('/', '\\'))
         self.source_match = '\.json$'
         self.translation_file_path = './translations/%LANG%/%LOCALE%.po'
 
-    def write_file(self, current_dir=current_dir, path_to_config_file=path_to_config_file):
+    def write_serge_file(self, current_dir=current_dir, path_to_config_file=path_to_config_file):
         contents = """
         sync
         {
@@ -108,9 +108,72 @@ class GenerateConfigurationFile():
                 }
 
             }
-        }""" % (self.project_Id, current_dir, self.remote_path, self.task_id, self.source_language,
+        }""" % (self.project_id, self.project_checkout_path, self.remote_path, self.task_id, self.source_language,
                 self.source_dir, self.source_match, self.translation_file_path)
-        # f = open(path_to_config_file + '/%s.serge' % self.project_Id, 'w')
-        # f.write(contents)
-        # f.close()
-        print(self.source_dir)
+
+        try:
+            f = open(os.path.join(self.root_path, 'bin', '%s.serge' % self.project_id), 'w+')
+            f.write(contents)
+            f.close()
+        except:
+            # os.makedirs(os.path.join(self.root_path, 'bin', str(self.project_id)))
+            f = open(os.path.join(self.root_path, 'bin', '%s.serge' % self.project_id), 'w+')
+            f.write(contents)
+            f.close()
+
+
+    def write_starling_file(self, access_key, secret_key,):
+        ts_path = os.path.join(self.source_dir,"%original_file_name%")
+        contents = """
+       # Your Starling credentials
+# Access Key
+"ak": "%s"
+# Secret Key
+"sk": "%s"
+"basePath": "."
+"projectId": %d
+# download configuration
+"download":
+  {
+    "namespaceId": [  ],
+    "taskId": [ ],
+    "downloadAllSpaces": true,
+    "stringStatus":
+      [
+        "untranslated",
+        "translated",
+        "released",
+        "unreleased"
+      ]
+ }
+# upload configuration
+"upload": {
+  "taskId": %d,
+#  "targetLanguages": [ "en" ]
+}
+#
+# Files configuration
+#
+files:
+  [
+    {
+      #
+      # Source files filter
+      # e.g. "/**/values/*.xml"
+      #
+      "source": "%s",
+      #
+      # Where translations will be placed
+      #
+      "translation": "%s",
+      #
+      # Files or directories for ignore
+      # e.g. ["/**/*.xml"]
+      #
+      "ignore": [ ]
+    }
+  ]
+       """ % (access_key, secret_key,int(self.project_id),int(self.task_id),self.source_dir.replace('\\','/')+'source.json',ts_path.replace('\\','/'))
+        f = open(os.path.join(self.root_path, 'bin','starling.yml'), 'w')
+        f.write(contents)
+        f.close()
