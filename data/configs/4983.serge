@@ -5,6 +5,10 @@
             {
                 plugin                      command
 
+                data
+                {
+                  project_id                 4983
+                }
 
             }
 
@@ -14,7 +18,7 @@
 
                 data
                 {
-                    local_path              C:\Users\JohnCurtis\Desktop\transphere-serge\projects\4956
+                    local_path              C:\Users\JohnCurtis\Desktop\transphere-serge\data\projects\4956
 
                     remote_path
                     {
@@ -41,7 +45,7 @@
                 output_only_mode            NO
                 source_language             en
                 destination_languages       zh
-                source_dir                  C:\Users\JohnCurtis\Desktop\transphere-serge\projects\4956\main\src\locales\
+                source_dir                  C:\Users\JohnCurtis\Desktop\transphere-serge\data\projects\4956\main\src\locales\
                 source_process_subdirs      NO
                 source_match                \.json$
                 source_exclude_dirs         ^(\.svn|\.git|\.hg|\.bzr|CVS)$
@@ -68,11 +72,11 @@
                 normalize_strings           NO
                 use_keys_as_context         NO
                 leave_untranslated_blank    NO
-                db_source                   DBI:SQLite:dbname=./translate.db3
+                db_source                   DBI:SQLite:dbname=../db/translate.db3
                 db_username                 l10n
                 db_password                 secretword
                 db_namespace                starling
-                ts_file_path                ./translations/%LANG%/%LOCALE%.po
+                ts_file_path                ../ts/%LANG%/%LOCALE%.po
                 output_lang_files           NO
                 output_default_lang_file    NO
                 output_encoding             UCS-2LE

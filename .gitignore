@@ -17,4 +17,4 @@ Build.bat
 .DS_Store
 !t/data/engine/**/reference-output/**
 /checkout
-/bin/starling.yml
+/data/configs/**/*.yml
