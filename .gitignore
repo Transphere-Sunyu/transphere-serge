@@ -18,3 +18,4 @@ Build.bat
 !t/data/engine/**/reference-output/**
 /checkout
 /data/configs/**/*.yml
+/data/configs/projects/**/main
