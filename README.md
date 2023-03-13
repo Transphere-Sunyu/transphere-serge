@@ -10,6 +10,8 @@ a CMS and TMS. Together, they form the core part of trans-localize.
 
 
 ### [Learn more at transphere.com &rarr;](https://www.transphere.com/)
+# Quick Start
+     $ npm install -g @volcengine/starling-cli-public
 
 # Project Structure
 

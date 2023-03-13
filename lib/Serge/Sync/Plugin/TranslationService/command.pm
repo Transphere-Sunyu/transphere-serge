@@ -56,7 +56,7 @@ sub pull_ts {
 
     my $force = $self->{optimizations} ? '' : ' --overwrite';
 
-    return $self->run_manage_py('../../bin/download.py --skip-missing'.$force, $langs);
+    return $self->run_manage_py('../../server/util/download.py --skip-missing'.$force, $langs);
 }
 
 sub push_ts {
@@ -64,7 +64,7 @@ sub push_ts {
 
     my $force = $self->{optimizations} ? '' : ' --force';
 
-    $self->run_manage_py("../../bin/upload.py".$force, $langs);
+    $self->run_manage_py("../../server/util/upload.py".$force, $langs);
 }
 
 1;

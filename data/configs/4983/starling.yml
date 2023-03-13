@@ -1,0 +1,53 @@
+
+       # Your Starling credentials
+# Access Key
+"ak": "AKLTMDc3MGY5ZmI4NDI4NDRjZmE0ZjkyMDhjZDQ0YzI0Yzg"
+# Secret Key
+"sk": "T0RReE1EQXlZMk0wWVdNMU5ETTBZVGhsTkdFd00yVmxPVGRsWkdRMll6VQ=="
+"basePath": "."
+"projectId": 4983
+
+
+#
+# Files configuration
+#
+files:
+  [
+
+    {
+      # upload configuration
+      "upload": {
+                "taskId": 29637195,
+            #  "targetLanguages": [ "en" ]
+          },
+      # download configuration
+      "download":
+          {
+              "namespaceId": [ ],
+              "taskId": [ 29637195 ],
+            #    "downloadAllSpaces": true,
+              "stringStatus":
+                [
+                    "untranslated",
+                    "translated",
+                    "released",
+                    "unreleased"
+                ]
+          },
+      #
+      # Source files filter
+      # e.g. "/**/values/*.xml"
+      #
+      "source": "C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales/source.json",
+      #
+      # Where translations will be placed
+      #
+      "translation": "C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales/%locale%/%original_file_name%",
+      #
+      # Files or directories for ignore
+      # e.g. ["/**/*.xml"]
+      #
+      "ignore": [ ]
+
+    }
+  ]
