@@ -5,67 +5,6 @@ Scanning .serge files in 'C:\Users\JohnCurtis\Desktop\transphere-serge\data\conf
 
 Updating project from VCS...
 
-HEAD is now at c68497b Automatic commit of translation files
-HEAD is now at c68497b Automatic commit of translation files
-'pull' step took 2.744312 seconds
-
-Pulling translation files from external translation service...
-
-Running 'python ../../bin/download.py --skip-missing --project_id=4956'...
-Project_id ===> 4956
-âˆš  success   update source C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales/source.json finished
-âˆš  success   update translation C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales/en/source.json finished
-âˆš  success   update translation C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales/zh-CN/source.json finished
-'pull-ts' step took 2.452917 seconds
-
-Running the translation framework...
-
-
-
-*** [20064782] "Job Test 1" ***
-
-Source dir: [C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales]
-DB source: [DBI:SQLite:dbname=../db/translate.db3]
-TS file path: [C:/Users/JohnCurtis/Desktop/transphere-serge/data/ts/%LANG%/%LOCALE%.po]
-Output path: [C:/Users/JohnCurtis/Desktop/transphere-serge/data/configs]
-Destination languages: [zh]
-Modified languages: [zh]
-Preloading cache for job '20064782' in namespace 'starling'...
-
-Updating database from source files...
-
-Scanning directory structure...
-Scanned in 0.001437 sec, 1 files match the criteria
-	source.json
-0 files are new, 0 were orphaned and 0 are no longer orphaned since last run
-update_database_from_source_files() took 0.003491 seconds
-Updating database from translation files for [zh] language...
-update_database_from_ts_files() took 2e-05 seconds
-
-Generating translation files...
-
-	source.json (not modified)
-generate_ts_files() took 0.001019 seconds
-generate_localized_files() took 5e-06 seconds
-*** [end] ***
-'localize' step took 0.022934 seconds
-
-Pushing translation files to external translation service...
-
-Running 'python ../../bin/upload.py --project_id=4956'...
-Project_id ===> 4956
-i  info      File 'C:/Users/JohnCurtis/Desktop/transphere-serge/data/projects/4956/main/src/locales/source.json'
-[ ]  pending   uploading
+HEAD is now at 433c425 Update README.md
 Terminating on signal SIGINT(2)
-Terminate batch job (Y/N)? ÿ^CTraceback (most recent call last):
-  File "C:\Users\JohnCurtis\Desktop\transphere-serge\bin\upload.py", line 7, in <module>
-    subprocess.run('cd %s && starling client upload && cd ..' % project_id, shell=True)
-  File "C:\Users\JohnCurtis\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 503, in run
-    stdout, stderr = process.communicate(input, timeout=timeout)
-  File "C:\Users\JohnCurtis\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 1144, in communicate
-    self.wait()
-  File "C:\Users\JohnCurtis\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 1207, in wait
-    return self._wait(timeout=timeout)
-  File "C:\Users\JohnCurtis\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 1488, in _wait
-    result = _winapi.WaitForSingleObject(self._handle,
-KeyboardInterrupt
+Terminate batch job (Y/N)? ÿ
